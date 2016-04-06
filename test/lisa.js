@@ -90,3 +90,31 @@ test('Apache-2.0 with custom author and custom year', t => {
     .replace(/{year}/, '2013')
   t.is(lisa({license: 'apache-2.0', author: 'Zach Orlovsky', year: '2013'}), apache)
 })
+
+test('ISC', t => {
+  const isc = fs.readFileSync('../licenses/isc', 'utf8')
+    .replace(/{year}/, new Date().getFullYear())
+    .replace(/{author}/, process.env.USER)
+  t.is(lisa({license: 'isc'}), isc)
+})
+
+test('ISC with custom author', t => {
+  const isc = fs.readFileSync('../licenses/isc', 'utf8')
+    .replace(/{year}/, new Date().getFullYear())
+    .replace(/{author}/, 'Zach Orlovsky')
+  t.is(lisa({license: 'isc', author: 'Zach Orlovsky'}), isc)
+})
+
+test('ISC with custom year', t => {
+  const isc = fs.readFileSync('../licenses/isc', 'utf8')
+    .replace(/{year}/, '2011')
+    .replace(/{author}/, process.env.USER)
+  t.is(lisa({license: 'isc', year: '2011'}), isc)
+})
+
+test('ISC with custom author and custom year', t => {
+  const isc = fs.readFileSync('../licenses/isc', 'utf8')
+    .replace(/{year}/, '2011')
+    .replace(/{author}/, 'Zach Orlovsky')
+  t.is(lisa({license: 'isc', author: 'Zach Orlovsky', year: '2011'}), isc)
+})
