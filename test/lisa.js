@@ -118,3 +118,8 @@ test('ISC with custom author and custom year', t => {
     .replace(/{author}/, 'Zach Orlovsky')
   t.is(lisa({license: 'isc', author: 'Zach Orlovsky', year: '2011'}), isc)
 })
+
+test('MPL-2.0', t => {
+  const mpl = fs.readFileSync('../licenses/mpl-2.0', 'utf8')
+  t.is(lisa({license: 'mpl-2.0'}), mpl)
+})
