@@ -1,8 +1,8 @@
 {
-  "name": "lisa",
+  "name": "lissie",
   "version": "0.1.0",
   "description": "generate license for your project",
-  "main": "dist/index.js",
+  "main": "dist/lissie.js",
   "scripts": {
     "test": "nyc ava",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
