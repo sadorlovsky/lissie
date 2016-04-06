@@ -123,3 +123,40 @@ test('MPL-2.0', t => {
   const mpl = fs.readFileSync('../licenses/mpl-2.0', 'utf8')
   t.is(lisa({license: 'mpl-2.0'}), mpl)
 })
+
+test('GPL-3.0', t => {
+  const gpl3 = fs.readFileSync('../licenses/gpl-3.0', 'utf8')
+    .replace(/{year}/, new Date().getFullYear())
+    .replace(/{author}/, process.env.USER)
+  t.is(lisa({license: 'gpl-3.0'}), gpl3)
+})
+
+test('GPL-3.0 with author', t => {
+  const gpl3 = fs.readFileSync('../licenses/gpl-3.0', 'utf8')
+    .replace(/{year}/, new Date().getFullYear())
+    .replace(/{author}/, 'Zach Orlovsky')
+  t.is(lisa({license: 'gpl-3.0', author: 'Zach Orlovsky'}), gpl3)
+})
+
+test('GPL-3.0 with year', t => {
+  const gpl3 = fs.readFileSync('../licenses/gpl-3.0', 'utf8')
+    .replace(/{year}/, '2015')
+    .replace(/{author}/, process.env.USER)
+  t.is(lisa({license: 'gpl-3.0', year: '2015'}), gpl3)
+})
+
+test('GPL-3.0 with project name', t => {
+  const gpl3 = fs.readFileSync('../licenses/gpl-3.0', 'utf8')
+    .replace(/{year}/, new Date().getFullYear())
+    .replace(/{author}/, process.env.USER)
+    .replace(/{project}/, 'Lisa')
+  t.is(lisa({license: 'gpl-3.0', project: 'Lisa'}), gpl3)
+})
+
+test('GPL-3.0 with project name', t => {
+  const gpl3 = fs.readFileSync('../licenses/gpl-3.0', 'utf8')
+    .replace(/{year}/, '2014')
+    .replace(/{author}/, 'Zach Orlovsky')
+    .replace(/{project}/, 'Lisa')
+  t.is(lisa({license: 'gpl-3.0', author: 'Zach Orlovsky', year: '2014', project: 'Lisa'}), gpl3)
+})
