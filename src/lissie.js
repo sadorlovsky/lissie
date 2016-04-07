@@ -4,7 +4,7 @@ const getAuthor = () => process.env.USER
 const getYear = () => new Date().getFullYear()
 const getLicenseText = (license) => fs.readFileSync(`../licenses/${license}`, 'utf8')
 
-const lisa = ({license='mit', author=getAuthor(), year=getYear(), email='', project=''}) => {
+const lissie = ({license='mit', author=getAuthor(), year=getYear(), email='', project=''}) => {
   let text = getLicenseText(license)
   text = text.replace(/{author}/, author).replace(/{year}/, year)
   if (email !== '') text = text.replace(/{email}/, email)
@@ -12,4 +12,4 @@ const lisa = ({license='mit', author=getAuthor(), year=getYear(), email='', proj
   return text
 }
 
-export default lisa
+export default lissie
