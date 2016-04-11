@@ -9,7 +9,7 @@ const getLicenseText = (license) => {
 
 const lissie = ({license='mit', author=getAuthor(), year=getYear(), email='', project=''}) => {
   let text = getLicenseText(license)
-  text = text.replace(/{author}/, author).replace(/{year}/, year)
+    .replace(/{author}/, author).replace(/{year}/, year)
   if (email !== '') text = text.replace(/{email}/, email)
   if (project !== '') text = text.replace(/{project}/, project)
   return text
