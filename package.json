@@ -24,9 +24,24 @@
     "dist",
     "licenses"
   ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "author": "Zach Orlovsky <sadorlovsky@gmail.com>",
   "license": "MIT",
-  "repository": "sadorlovsky/lissie",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sadorlovsky/lissie.git"
+  },
+  "keywords": [
+    "license",
+    "generator",
+    "cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/sadorlovsky/lissie/issues"
+  },
+  "homepage": "https://github.com/sadorlovsky/lissie",
   "devDependencies": {
     "ava": "^0.13.0",
     "babel-cli": "^6.6.5",
