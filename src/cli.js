@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import meow from 'meow'
 import lissie from './lissie'
 
@@ -30,12 +32,23 @@ const cli = meow(`
   }
 )
 
-console.log(
-  lissie({
-    license: cli.input[0],
-    author: cli.flags.author,
-    year: cli.flags.year,
-    email: cli.flags.email,
-    project: cli.flags.project
+function ls () {
+  const licenses = fs.readdirSync(path.resolve(__dirname, '..', 'licenses'))
+  return licenses.reduce((prev, current) => {
+    return `${prev}\n${current}`
   })
-)
+}
+
+if (cli.input[0] === 'ls') {
+  console.log(ls())
+}
+
+// console.log(
+//   lissie({
+//     license: cli.input[0],
+//     author: cli.flags.author,
+//     year: cli.flags.year,
+//     email: cli.flags.email,
+//     project: cli.flags.project
+//   })
+// )
