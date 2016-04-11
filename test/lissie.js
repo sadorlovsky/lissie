@@ -39,18 +39,21 @@ test('MIT with custom author and custom year', t => {
 
 test('WTFPL', t => {
   const wtfpl = fs.readFileSync('../licenses/wtfpl', 'utf8')
+    .replace(/{year}/, new Date().getFullYear())
     .replace(/{author}/, process.env.USER)
   t.is(lissie({license: 'wtfpl'}), wtfpl)
 })
 
 test('WTFPL with custom author', t => {
   const wtfpl = fs.readFileSync('../licenses/wtfpl', 'utf8')
+    .replace(/{year}/, new Date().getFullYear())
     .replace(/{author}/, 'Zach Orlovsky')
   t.is(lissie({license: 'wtfpl', author: 'Zach Orlovsky'}), wtfpl)
 })
 
 test('WTFPL with custom author', t => {
   const wtfpl = fs.readFileSync('../licenses/wtfpl', 'utf8')
+    .replace(/{year}/, new Date().getFullYear())
     .replace(/{author}/, process.env.USER)
     .replace(/{email}/, 'sadorlovsky@gmail.com')
   t.is(lissie({license: 'wtfpl', email: 'sadorlovsky@gmail.com'}), wtfpl)
@@ -58,9 +61,17 @@ test('WTFPL with custom author', t => {
 
 test('WTFPL with custom author and email', t => {
   const wtfpl = fs.readFileSync('../licenses/wtfpl', 'utf8')
+    .replace(/{year}/, new Date().getFullYear())
     .replace(/{author}/, 'Zach Orlovsky')
     .replace(/{email}/, 'sadorlovsky@gmail.com')
   t.is(lissie({license: 'wtfpl', author: 'Zach Orlovsky', email: 'sadorlovsky@gmail.com'}), wtfpl)
+})
+
+test('WTFPL with custom year', t => {
+  const wtfpl = fs.readFileSync('../licenses/wtfpl', 'utf8')
+    .replace(/{author}/, process.env.USER)
+    .replace(/{year}/, '2010')
+  t.is(lissie({license: 'wtfpl', year: '2010'}), wtfpl)
 })
 
 test('Apache-2.0', t => {
