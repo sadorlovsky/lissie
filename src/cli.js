@@ -29,3 +29,13 @@ const cli = meow(`
     }
   }
 )
+
+console.log(
+  lissie({
+    license: cli.input[0],
+    author: cli.flags.author,
+    year: cli.flags.year,
+    email: cli.flags.email,
+    project: cli.flags.project
+  })
+)

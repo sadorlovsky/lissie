@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "tool for generating LICENSE",
   "main": "dist/lissie.js",
+  "bin": {
+    "lissie": "bin/lissie.js"
+  },
+  "preferGlobal": true,
   "scripts": {
     "test": "nyc ava",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
