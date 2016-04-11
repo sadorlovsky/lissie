@@ -5,18 +5,30 @@
 
 *WORK IN PROGRESS*
 
-## Installation
+## Usage
+### CLI
 ```bash
 npm install -g lissie
 ```
 
-## Usage
-### CLI
 ```bash
 $ lissie mit -a "Zach Orlovsky"
 ```
+###### Options
+```
+-a, --author "<your name>"
+-y, --year <year>
+-e, --email "<your email>"
+-p, --project "<project name>"
+-v, --version
+-h, --help
+```
 
 ### Node.js
+```bash
+npm install lissie --save
+```
+
 ```javascript
 import lissie from 'lissie'
 
@@ -24,5 +36,15 @@ lissie({
   license: 'mit'
   author: 'Zach Orlovsky',
   email: 'sadorlovsky@gmail.com'
+})
+```
+###### API
+```javascript
+lissie({
+  license: '<license>',      // default: 'mit'
+  author: '<your name>',     // default: env.USER
+  year: '<year>',            // default: Date().getFullYear()
+  email: '<your email>',     // default: ''
+  project: '<project name>', // default: ''
 })
 ```
