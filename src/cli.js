@@ -3,7 +3,7 @@ import lissie from './lissie'
 
 const cli = meow(`
   Usage
-    $ lisa <license>
+    $ lissie <license>
 
   Options
     -a, --author "<your name>"
@@ -14,9 +14,9 @@ const cli = meow(`
     -h, --help
 
   Examples
-    $ lisa mit
-    $ lisa mit -a "Zach Orlovsky" -y 2016
-    $ lisa mit -a "Zach Orlovsky" -e "sadorlovsky@gmail.com"
+    $ lissie mit
+    $ lissie mit -a "Zach Orlovsky" -y 2016
+    $ lissie mit -a "Zach Orlovsky" -e "sadorlovsky@gmail.com"
 `,
   {
     alias: {
