@@ -8,13 +8,14 @@
   },
   "preferGlobal": true,
   "scripts": {
+    "lint": "eslint src test",
     "pretest": "npm run build",
     "test": "nyc ava",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "build": "babel src -d dist",
-    "prepublish": "npm run test && npm run build"
+    "prepublish": "npm run lint && npm run test && npm run build"
   },
   "ava": {
     "require": [
