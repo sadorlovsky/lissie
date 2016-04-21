@@ -51,7 +51,7 @@ test('WTFPL with custom author', t => {
   t.is(lissie({license: 'wtfpl', author: 'Zach Orlovsky'}), wtfpl)
 })
 
-test('WTFPL with custom author', t => {
+test('WTFPL with custom email', t => {
   const wtfpl = fs.readFileSync('../licenses/wtfpl', 'utf8')
     .replace(/{year}/, new Date().getFullYear())
     .replace(/{author}/, process.env.USER)
@@ -164,7 +164,7 @@ test('GPL-3.0 with project name', t => {
   t.is(lissie({license: 'gpl-3.0', project: 'lissie'}), gpl3)
 })
 
-test('GPL-3.0 with project name', t => {
+test('GPL-3.0 with all custom', t => {
   const gpl3 = fs.readFileSync('../licenses/gpl-3.0', 'utf8')
     .replace(/{year}/, '2014')
     .replace(/{author}/, 'Zach Orlovsky')
