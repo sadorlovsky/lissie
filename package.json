@@ -1,6 +1,6 @@
 {
   "name": "lissie",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "tool for generating LICENSE",
   "main": "dist/lissie.js",
   "bin": {
