@@ -5,7 +5,8 @@ import lissie from './lissie'
 
 const cli = meow(`
   Usage
-    $ lissie <license>
+    $ lissie <license>  Show text of given license
+    $ lissie ls         List of available licenses
 
   Options
     -a, --author "<your name>"
