@@ -34,21 +34,22 @@ const cli = meow(`
 
 function ls () {
   const licenses = fs.readdirSync(path.resolve(__dirname, '..', 'licenses'))
-  return licenses.reduce((prev, current) => {
-    return `${prev}\n${current}`
+  return licenses.reduce((prev, curr) => {
+    return `${prev}\n${curr}`
   })
 }
 
 if (cli.input[0] === 'ls') {
   console.log(ls())
+  process.exit()
 }
 
-// console.log(
-//   lissie({
-//     license: cli.input[0],
-//     author: cli.flags.author,
-//     year: cli.flags.year,
-//     email: cli.flags.email,
-//     project: cli.flags.project
-//   })
-// )
+console.log(
+  lissie({
+    license: cli.input[0],
+    author: cli.flags.author,
+    year: cli.flags.year,
+    email: cli.flags.email,
+    project: cli.flags.project
+  })
+)
