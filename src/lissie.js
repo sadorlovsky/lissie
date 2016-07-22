@@ -1,10 +1,11 @@
 import path from 'path'
 import fs from 'fs'
 import Promise from 'bluebird'
+import fullname from 'fullname'
 
 const readFile = Promise.promisify(fs.readFile)
 
-const getAuthor = () => Promise.resolve(process.env.USER)
+const getAuthor = () => fullname()
 const getYear = () => new Date().getFullYear()
 const getLicenseText = license => {
   return readFile(path.resolve('..', `licenses/${license}`), 'utf8')
@@ -19,8 +20,8 @@ const template = (text, vars) => {
 const lissie = props => {
   return Promise.props({
     license: 'mit',
-    author: getAuthor(),
-    year: getYear()
+    author: fullname(),
+    year: new Date().getFullYear()
   })
   .then(defaultOptions => {
     return Object.assign({}, defaultOptions, props)
