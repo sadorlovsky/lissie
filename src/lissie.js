@@ -1,12 +1,11 @@
 import path from 'path'
 import fs from 'fs'
 import Promise from 'bluebird'
-import fullname from 'fullname'
+import fullname from 'user-fullname'
+import email from 'user-email'
 
 const readFile = Promise.promisify(fs.readFile)
 
-const getAuthor = () => fullname()
-const getYear = () => new Date().getFullYear()
 const getLicenseText = license => {
   return readFile(path.resolve('..', `licenses/${license}`), 'utf8')
 }
@@ -21,7 +20,8 @@ const lissie = props => {
   return Promise.props({
     license: 'mit',
     author: fullname(),
-    year: new Date().getFullYear()
+    year: new Date().getFullYear(),
+    email: email()
   })
   .then(defaultOptions => {
     return Object.assign({}, defaultOptions, props)
