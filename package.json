@@ -72,6 +72,6 @@
     "fullname": "^3.1.0",
     "meow": "^3.7.0",
     "user-email": "^1.0.1",
-    "user-fullname": "^0.1.0"
+    "user-fullname": "^0.1.7"
   }
 }
