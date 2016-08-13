@@ -1,14 +1,11 @@
 import path from 'path'
 import fs from 'fs'
-import Promise from 'bluebird'
-import fullname from 'user-fullname'
-import email from 'user-email'
-
-const readFile = Promise.promisify(fs.readFile)
+import pify from 'pify'
 
 const getLicenseText = license => {
-  return readFile(path.resolve('..', `licenses/${license}`), 'utf8')
+  return pify(fs.readFile)(path.resolve(`licenses/${license}`), 'utf8')
 }
+
 const template = (text, vars) => {
   return Object.keys(vars).filter(k => vars[k]).reduce((res, key) => {
     const re = new RegExp(`{${key}}`)
@@ -17,28 +14,13 @@ const template = (text, vars) => {
 }
 
 const lissie = props => {
-  return Promise.props({
+  const defaultOptions = {
     license: 'mit',
-    author: fullname(),
-    year: new Date().getFullYear(),
-    email: email()
-  })
-  .then(defaultOptions => {
-    return Object.assign({}, defaultOptions, props)
-  })
-  .then(options => {
-    return [
-      getLicenseText(options.license),
-      options
-    ]
-  })
-  .spread((text, options) => {
-    return template(text, {
-      author: options.author,
-      year: options.year,
-      email: options.email,
-      project: options.project
-    })
+    year: new Date().getFullYear()
+  }
+  const options = Object.assign({}, defaultOptions, props)
+  return getLicenseText(options.license).then(text => {
+    return template(text, options)
   })
 }
 
