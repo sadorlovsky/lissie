@@ -1,6 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 import pify from 'pify'
+import assign from 'assign-defined'
 
 const getLicenseText = license => {
   return pify(fs.readFile)(path.resolve(`licenses/${license}`), 'utf8')
@@ -18,7 +19,7 @@ const lissie = props => {
     license: 'mit',
     year: new Date().getFullYear()
   }
-  const options = Object.assign({}, defaultOptions, props)
+  const options = assign({}, defaultOptions, props)
   return getLicenseText(options.license).then(text => {
     return template(text, options)
   })
