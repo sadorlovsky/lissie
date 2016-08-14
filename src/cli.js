@@ -40,11 +40,11 @@ const ls = () => {
 }
 
 if (cli.input[0] === 'ls') {
-  ls().then(r => {
-    console.log(r)
+  ls().then(list => {
+    console.log(list)
     process.exit()
-  }).catch(e => {
-    console.log(e)
+  }).catch(error => {
+    console.log(error)
     process.exit(1)
   })
 }
