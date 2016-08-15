@@ -55,4 +55,4 @@ lissie({
   year: cli.flags.year,
   email: cli.flags.email,
   project: cli.flags.project
-}).then(console.log)
+}).then(license => console.log(license))
