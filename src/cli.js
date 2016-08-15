@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import meow from 'meow'
 import pify from 'pify'
-import fullname from 'user-fullname'
-import email from 'user-email'
+import userFullname from 'user-fullname'
+import userEmail from 'user-email'
 import projectName from 'project-name'
 import lissie from './lissie'
 
@@ -53,8 +53,8 @@ if (cli.input[0] === 'ls') {
 }
 
 Promise.all([
-  fullname(),
-  email()
+  userFullname(),
+  userEmail()
 ]).then(results => {
   const [author, email] = results
   const project = projectName()
