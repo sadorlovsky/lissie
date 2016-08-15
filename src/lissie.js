@@ -5,18 +5,15 @@ import assign from 'assign-defined'
 import template from './template'
 
 const getLicenseText = license => {
-  return pify(fs.readFile)(path.resolve(__dirname, '..', 'licenses', `${license}`), 'utf8')
-}
-
-const template = (text, vars) => {
-  return Object.keys(assign({}, vars)).reduce((res, key) => {
-    const re = new RegExp(`{${key}}`)
-    return res.replace(re, vars[key])
-  }, text)
+  return pify(fs.readFile)(
+    path.resolve(__dirname, '..', 'licenses', `${license}`), 'utf8'
+  )
 }
 
 const lissie = props => {
-  const options = typeof props === 'string' ? { license: props } : assign({}, props)
+  const options = typeof props === 'string'
+    ? { license: props }
+    : assign({}, props)
   return getLicenseText(options.license || 'mit').then(text => {
     return template(text, options)
   })

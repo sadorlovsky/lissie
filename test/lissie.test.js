@@ -1,4 +1,3 @@
-import fs from 'fs'
 import test from 'ava'
 import lissie from '../src/lissie'
 import strip from './helpers/strip'
