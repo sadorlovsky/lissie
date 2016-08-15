@@ -2,6 +2,9 @@ import fs from 'fs'
 import path from 'path'
 import meow from 'meow'
 import pify from 'pify'
+import fullname from 'user-fullname'
+import email from 'user-email'
+import projectName from 'project-name'
 import lissie from './lissie'
 
 const cli = meow(`
@@ -35,7 +38,7 @@ const cli = meow(`
 )
 
 const ls = () => {
-  return pify(fs.readdir)(path.resolve('licenses'))
+  return pify(fs.readdir)(path.resolve(__dirname, '..', 'licenses'))
     .then(licenses => licenses.join('\n'))
 }
 
@@ -49,10 +52,21 @@ if (cli.input[0] === 'ls') {
   })
 }
 
-lissie({
-  license: cli.input[0],
-  author: cli.flags.author,
-  year: cli.flags.year,
-  email: cli.flags.email,
-  project: cli.flags.project
-}).then(license => console.log(license))
+Promise.all([
+  fullname(),
+  email()
+]).then(results => {
+  const [author, email] = results
+  const project = projectName()
+  const year = new Date().getFullYear()
+  return lissie({
+    license: cli.input[0],
+    author: cli.flags.author || author,
+    year: cli.flags.year || year,
+    email: cli.flags.email || email,
+    project: cli.flags.project || project
+  })
+}).then(license => {
+  console.log(license)
+  process.exit()
+})

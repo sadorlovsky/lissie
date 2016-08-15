@@ -79,6 +79,7 @@
     "fullname": "^3.1.0",
     "meow": "^3.7.0",
     "pify": "^2.3.0",
+    "project-name": "^0.2.6",
     "user-email": "^1.0.1",
     "user-fullname": "^0.1.7"
   }
