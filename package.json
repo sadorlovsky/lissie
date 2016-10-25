@@ -80,6 +80,9 @@
     "meow": "^3.7.0",
     "pify": "^2.3.0",
     "project-name": "^0.2.6",
+    "promise.any": "^0.1.0",
+    "read-pkg": "^1.1.0",
+    "read-pkg-up": "^1.0.1",
     "user-email": "^1.0.1",
     "user-fullname": "^0.1.7"
   }

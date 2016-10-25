@@ -2,9 +2,9 @@ import fs from 'fs'
 import path from 'path'
 import meow from 'meow'
 import pify from 'pify'
-import userFullname from 'user-fullname'
 import userEmail from 'user-email'
 import projectName from 'project-name'
+import userFullname from './fullname'
 import lissie from './lissie'
 
 const cli = meow(`
