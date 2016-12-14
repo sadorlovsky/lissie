@@ -7,7 +7,7 @@ const cli = meow(`
     $ lissie <license>
 `)
 
-lissie(cli.input[0])
+lissie(cli.input[0] || 'mit')
   .then(text => text.replace('{year}', chalk.black.bgYellow.bold('{year}')))
   .then(text => text.replace('{author}', chalk.black.bgYellow.bold('{author}')))
   .then(text => console.log(text))
