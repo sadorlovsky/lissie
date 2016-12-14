@@ -1,6 +1,6 @@
 const meow = require('meow')
 const chalk = require('chalk')
-const lissie = require('./lissie-async')
+const lissie = require('./lissie')
 
 const cli = meow(`
   Usage
