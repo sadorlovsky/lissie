@@ -2,7 +2,7 @@ import test from 'ava'
 import lissie from '../src/lissie'
 import strip from './helpers/strip'
 
-test(async t => {
+test.skip(async t => {
   const expected = strip`
   The MIT License (MIT)
 
@@ -30,4 +30,9 @@ test(async t => {
   t.is(await lissie(), expected)
   t.is(await lissie('mit'), expected)
   t.is(await lissie({ license: 'mit' }), expected)
+})
+
+test(t => {
+  lissie({ license: 'wtfpl', author: 'Orlovsky' })
+  t.pass()
 })
