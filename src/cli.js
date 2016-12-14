@@ -7,7 +7,11 @@ const cli = meow(`
     $ lissie <license>
 `)
 
+const highlight = text => text.replace(
+  /\{year\}|\{author\}|\{project\}|\{email\}/gi,
+  matched => chalk.black.bgYellow(matched)
+)
+
 lissie(cli.input[0] || 'mit')
-  .then(text => text.replace('{year}', chalk.black.bgYellow.bold('{year}')))
-  .then(text => text.replace('{author}', chalk.black.bgYellow.bold('{author}')))
+  .then(highlight)
   .then(text => console.log(text))
