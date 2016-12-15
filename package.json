@@ -8,9 +8,8 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "lint": "eslint src test",
-    "pretest": "npm run build && rimraf coverage",
-    "test": "NODE_ENV=test nyc --check-coverage --lines 100 ava",
+    "lint": "eslint src",
+    "test": "NODE_ENV=test nyc ava",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
