@@ -4,7 +4,7 @@
   "description": "CLI tool for generate LICENSE",
   "main": "dist/lissie.js",
   "bin": {
-    "license": "bin/lissie.js"
+    "license": "dist/cli.js"
   },
   "preferGlobal": true,
   "scripts": {
@@ -31,7 +31,6 @@
     "instrument": false
   },
   "files": [
-    "bin",
     "dist",
     "licenses"
   ],
