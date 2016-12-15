@@ -2,7 +2,7 @@
 
 import meow from 'meow'
 import chalk from 'chalk'
-import lissie from './lissie'
+import license from './lissie'
 
 const cli = meow(`
   Usage
@@ -32,7 +32,7 @@ const highlight = text => text.replace(
   matched => chalk.black.bgYellow(matched)
 )
 
-lissie(cli.input[0] || 'mit', {
+license(cli.input[0] || 'mit', {
   author: cli.flags.author,
   year: cli.flags.year,
   email: cli.flags.email,

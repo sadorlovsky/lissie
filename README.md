@@ -12,9 +12,9 @@ npm install -g lissie
 ```
 
 ```bash
-$ lissie # MIT by default
-$ lissie ls # list available licenses
-$ lissie mit -a 'Zach Orlovsky' # author full name
+$ license # MIT by default
+$ license ls # list available licenses
+$ license mit -a 'Zach Orlovsky' # author full name
 ```
 
 ### Node.js
@@ -23,10 +23,9 @@ npm install lissie --save
 ```
 
 ```javascript
-import lissie from 'lissie'
+import license from 'lissie'
 
-lissie({
-  license: 'mit',
+license('MIT', {
   author: 'Zach Orlovsky'
 })
 ```
