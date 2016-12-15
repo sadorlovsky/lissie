@@ -28,8 +28,7 @@ const highlight = text => text.replace(
   matched => chalk.black.bgYellow(matched)
 )
 
-lissie({
-  license: cli.input[0] || 'mit',
+lissie(cli.input[0] || 'mit', {
   author: cli.flags.author,
   year: cli.flags.year
 })

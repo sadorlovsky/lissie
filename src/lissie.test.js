@@ -8,13 +8,12 @@ import lissie from './lissie'
 
 test('returns license text', async t => {
   const expected = await pify(fs).readFile(path.join('licenses', 'mit'), { encoding: 'utf8' })
+  t.is(await lissie(), expected)
   t.is(await lissie('mit'), expected)
-  t.is(await lissie({ license: 'mit' }), expected)
 })
 
 test('pass options', async t => {
-  const mit = await lissie({
-    license: 'mit',
+  const mit = await lissie('mit', {
     year: 2016,
     author: 'Zach Orlovsky'
   })
