@@ -15,3 +15,4 @@ const highlight = text => text.replace(
 lissie(cli.input[0] || 'mit')
   .then(highlight)
   .then(text => console.log(text))
+  .catch(err => console.log(err))

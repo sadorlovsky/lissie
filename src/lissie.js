@@ -7,6 +7,11 @@ const lissie = options => {
   const license = isString(options) ? options : get(options, 'license')
   return pify(fs)
     .readFile(path.join('licenses', license), { encoding: 'utf8' })
+    .catch(({ code }) => {
+      if (code === 'ENOENT') {
+        throw 'There is not that license'
+      }
+    })
 }
 
 module.exports = lissie
