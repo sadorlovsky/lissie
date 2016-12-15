@@ -2,7 +2,7 @@
   "name": "lissie",
   "version": "0.2.0",
   "description": "CLI tool for generate LICENSE",
-  "main": "src/lissie.js",
+  "main": "dist/lissie.js",
   "bin": {
     "license": "bin/lissie.js"
   },
@@ -11,10 +11,9 @@
     "lint": "eslint src",
     "test": "NODE_ENV=test nyc ava",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "clean": "del coverage dist",
-    "pretest": "npm run clean",
-    "prebuild": "npm run clean",
-    "build": "babel src -d dist"
+    "pretest": "del coverage",
+    "prebuild": "del dist",
+    "build": "babel src -d dist --ignore \"**/*.test.js\""
   },
   "ava": {
     "require": [
@@ -60,6 +59,7 @@
     "babel-cli": "^6.11.4",
     "babel-eslint": "^7.1.1",
     "babel-plugin-istanbul": "^3.0.0",
+    "babel-preset-env": "^1.1.1",
     "babel-preset-es2015": "^6.13.2",
     "babel-register": "^6.11.6",
     "common-tags": "^1.4.0",
