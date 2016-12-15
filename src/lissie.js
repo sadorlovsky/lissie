@@ -1,8 +1,10 @@
-import { readFile } from 'fs'
+import { readFile, readdir } from 'fs'
 import path from 'path'
 import pify from 'pify'
 
 const normalize = text => text.trim().toLowerCase().replace(' ', '-')
+
+export const list = () => pify(readdir)('licenses')
 
 export default (license = 'mit', options = {}) => pify(readFile)(
     path.join('licenses', normalize(license)), { encoding: 'utf8' }

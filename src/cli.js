@@ -2,7 +2,7 @@
 
 import meow from 'meow'
 import chalk from 'chalk'
-import license from './lissie'
+import license, { list } from './lissie'
 
 const cli = meow(`
   Usage
@@ -31,6 +31,12 @@ const highlight = text => text.replace(
   /\{year\}|\{author\}|\{project\}|\{email\}/gi,
   matched => chalk.black.bgYellow(matched)
 )
+
+if (cli.input[0] === 'list') {
+  list()
+    .then(licenses => licenses.map(l => console.log('⚫', l)))
+    .then(() => process.exit())
+}
 
 license(cli.input[0] || 'mit', {
   author: cli.flags.author,
