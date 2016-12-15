@@ -2,5 +2,9 @@
   "extends": [
     "@sadorlovsky",
     "@sadorlovsky/eslint-config/ava"
-  ]
+  ],
+  "rules": {
+    "ava/max-asserts":  "off",
+    "import/no-commonjs": "off"
+  }
 }
