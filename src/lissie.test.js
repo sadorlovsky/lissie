@@ -26,6 +26,11 @@ test('pass options', async t => {
   t.is(head, expected)
 })
 
+test('normalize input', async t => {
+  t.is(await lissie('WTFPL'), await lissie('wtfpl'))
+  t.is(await lissie('Apache 2.0'), await lissie('apache-2.0'))
+})
+
 test('throws if no license found', t => {
   t.throws(lissie('no-exist'))
 })
