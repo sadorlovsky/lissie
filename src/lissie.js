@@ -1,11 +1,10 @@
-const fs = require('fs')
-const path = require('path')
-const pify = require('pify')
+import { readFile } from 'fs'
+import path from 'path'
+import pify from 'pify'
 
 const normalize = text => text.trim().toLowerCase().replace(' ', '-')
 
-const lissie = (license = 'mit', options = {}) => pify(fs)
-  .readFile(
+export default (license = 'mit', options = {}) => pify(readFile)(
     path.join('licenses', normalize(license)), { encoding: 'utf8' }
   )
   .then(text => text.replace(
@@ -17,5 +16,3 @@ const lissie = (license = 'mit', options = {}) => pify(fs)
       throw new Error('There is not that license')
     }
   })
-
-module.exports = lissie

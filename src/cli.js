@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const meow = require('meow')
-const chalk = require('chalk')
-const lissie = require('./lissie')
+import meow from 'meow'
+import chalk from 'chalk'
+import lissie from './lissie'
 
 const cli = meow(`
   Usage
