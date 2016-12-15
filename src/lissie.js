@@ -9,7 +9,7 @@ const lissie = options => {
     .readFile(path.join('licenses', license), { encoding: 'utf8' })
     .catch(({ code }) => {
       if (code === 'ENOENT') {
-        throw 'There is not that license'
+        throw new Error('There is not that license')
       }
     })
 }
