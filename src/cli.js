@@ -9,8 +9,10 @@ const cli = meow(`
     $ license <license>
 
   Options
-    --author, -a
-    --year,   -y
+    --author,  -a
+    --year,    -y
+    --email,   -e
+    --project, -p
 
   Examples
     $ license
@@ -19,7 +21,9 @@ const cli = meow(`
 `, {
   alias: {
     a: 'author',
-    y: 'year'
+    y: 'year',
+    e: 'email',
+    p: 'project'
   }
 })
 
@@ -30,7 +34,9 @@ const highlight = text => text.replace(
 
 lissie(cli.input[0] || 'mit', {
   author: cli.flags.author,
-  year: cli.flags.year
+  year: cli.flags.year,
+  email: cli.flags.email,
+  project: cli.flags.project
 })
   .then(highlight)
   .then(text => console.log(text))
