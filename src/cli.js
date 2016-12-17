@@ -16,6 +16,8 @@ const cli = meow(`
     --year,    -y
     --email,   -e
     --project, -p
+    --version, -v
+    --help,    -h
 
   Examples
     $ license
@@ -26,7 +28,9 @@ const cli = meow(`
     a: 'author',
     y: 'year',
     e: 'email',
-    p: 'project'
+    p: 'project',
+    v: 'version',
+    h: 'help'
   }
 })
 
