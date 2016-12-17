@@ -2,6 +2,7 @@
 
 import meow from 'meow'
 import chalk from 'chalk'
+import map from 'lodash/fp/map'
 import license, { list } from './lissie'
 
 const cli = meow(`
@@ -34,7 +35,7 @@ const highlight = text => text.replace(
 
 if (cli.input[0] === 'list') {
   list()
-    .then(licenses => licenses.map(l => console.log('⚫', l)))
+    .then(map(l => console.log('⚫', l)))
     .then(() => process.exit())
 }
 
