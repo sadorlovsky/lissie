@@ -84,7 +84,6 @@
     "read-pkg": "^2.0.0",
     "read-pkg-up": "^2.0.0",
     "update-notifier": "^1.0.3",
-    "user-email": "^1.0.1",
-    "user-fullname": "^0.3.0"
+    "user-email": "^1.0.1"
   }
 }
