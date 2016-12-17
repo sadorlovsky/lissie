@@ -4,6 +4,7 @@ import pify from 'pify'
 import assign from 'deep-assign'
 import fullname from 'fullname'
 import email from 'user-email'
+import project from 'project-name'
 import pProps from 'p-props'
 
 const normalize = text => text.trim().toLowerCase().replace(' ', '-')
@@ -14,7 +15,8 @@ export default (license = 'mit', options = {}) => {
   return pProps({
     year: Promise.resolve(new Date().getFullYear()),
     author: fullname(),
-    email: email()
+    email: email(),
+    project: project()
   })
   .then(defaults => assign({}, defaults, options))
   .then(opts => {
