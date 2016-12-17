@@ -6,8 +6,10 @@ const normalize = text => text.trim().toLowerCase().replace(' ', '-')
 
 export const list = () => pify(readdir)('licenses')
 
-export default (license = 'mit', options = {}) => pify(readFile)(
-    path.join('licenses', normalize(license)), { encoding: 'utf8' }
+export default (license = 'mit', options = {}) => {
+  return pify(readFile)(
+    path.join(__dirname, '..', 'licenses', normalize(license)),
+    { encoding: 'utf8' }
   )
   .then(text => text.replace(
     /\{year\}|\{author\}|\{project\}|\{email\}/gi,
@@ -18,3 +20,4 @@ export default (license = 'mit', options = {}) => pify(readFile)(
       throw new Error('There is not that license')
     }
   })
+}
