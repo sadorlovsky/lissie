@@ -1,6 +1,6 @@
 {
   "name": "lissie",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "CLI tool for generate LICENSE",
   "main": "dist/lissie.js",
   "bin": {
@@ -14,7 +14,7 @@
     "pretest": "del coverage",
     "prebuild": "del dist",
     "build": "babel src -d dist --ignore \"**/*.test.js\"",
-    "prepublish": "npm run lint && npm run test && npm run build"
+    "prepublishOnly": "npm run lint && npm run test && npm run build"
   },
   "ava": {
     "require": [
