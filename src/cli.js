@@ -2,7 +2,9 @@
 
 import meow from 'meow'
 import chalk from 'chalk'
+import updateNotifier from 'update-notifier'
 import map from 'lodash/fp/map'
+import pkg from '../package.json'
 import license, { list } from './lissie'
 
 const cli = meow(`
@@ -38,6 +40,8 @@ if (cli.input[0] === 'list') {
     .then(map(l => console.log('⚫', l)))
     .then(() => process.exit())
 }
+
+updateNotifier({ pkg }).notify()
 
 license(cli.input[0] || 'mit', {
   author: cli.flags.author,
