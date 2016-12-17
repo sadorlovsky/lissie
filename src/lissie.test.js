@@ -1,29 +1,31 @@
-import fs from 'fs'
-import path from 'path'
-import pify from 'pify'
 import test from 'ava'
 import { take } from 'lodash'
 import { stripIndent } from 'common-tags'
 import license from './lissie'
 
+const head = x => take(x.split('\n'), 3).join('\n')
+
 test('returns license text', async t => {
-  const expected = await pify(fs).readFile(path.join('licenses', 'mit'), { encoding: 'utf8' })
-  t.is(await license(), expected)
-  t.is(await license('mit'), expected)
+  const expected = stripIndent`
+  The MIT License (MIT)
+
+  Copyright (c) 2016 {author}
+`
+  t.is(head(await license()), expected)
+  t.is(head(await license('mit')), expected)
 })
 
 test('pass options', async t => {
   const mit = await license('mit', {
-    year: 2016,
+    year: 2015,
     author: 'Zach Orlovsky'
   })
   const expected = stripIndent`
   The MIT License (MIT)
 
-  Copyright (c) 2016 Zach Orlovsky
+  Copyright (c) 2015 Zach Orlovsky
 `
-  const head = take(mit.split('\n'), 3).join('\n')
-  t.is(head, expected)
+  t.is(head(mit), expected)
 })
 
 test('normalize input', async t => {
