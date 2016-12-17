@@ -8,18 +8,17 @@
 ## Usage
 ### CLI
 ```bash
-npm install -g lissie
+$ npm install -g lissie
 ```
 
 ```bash
 $ license # MIT by default
-$ license ls # list available licenses
 $ license mit -a 'Zach Orlovsky' # author full name
 ```
 
 ### Node.js
 ```bash
-npm install lissie --save
+$ npm install lissie --save
 ```
 
 ```javascript
