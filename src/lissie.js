@@ -6,18 +6,23 @@ import fullname from 'fullname'
 import email from 'user-email'
 import project from 'project-name'
 import pProps from 'p-props'
+import { isNil } from 'lodash'
 
 const normalize = text => text.trim().toLowerCase().replace(' ', '-')
 
 export const list = () => pify(readdir)('licenses')
 
 export default (license = 'mit', options = {}) => {
-  return pProps({
+  const magic = isNil(options.magic) ? 'true' : options.magic
+  const props = magic ? {
     year: Promise.resolve(new Date().getFullYear()),
     author: fullname(),
     email: email(),
     project: project()
-  })
+  } : {
+    year: Promise.resolve(new Date().getFullYear())
+  }
+  return pProps(props)
   .then(defaults => assign({}, defaults, options))
   .then(opts => {
     return pify(readFile)(

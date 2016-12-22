@@ -4085,14 +4085,6 @@ user-email@^1.0.1:
     npm-email "^2.0.0"
     tree-kill "^1.1.0"
 
-user-fullname@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/user-fullname/-/user-fullname-0.3.0.tgz#8281817244a2b19bdb0d697fcded5485717b4f53"
-  dependencies:
-    execa "^0.4.0"
-    passwd-user "^2.1.0"
-    promise.any "^0.1.0"
-
 user-home@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/user-home/-/user-home-1.1.1.tgz#2b5be23a32b63a7c9deb8d0f28d485724a3df190"
