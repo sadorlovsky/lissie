@@ -12,12 +12,13 @@ const cli = meow(`
     $ license <license>
 
   Options
-    --author,  -a
-    --year,    -y
-    --email,   -e
-    --project, -p
-    --version, -v
-    --help,    -h
+    --author,   -a
+    --year,     -y
+    --email,    -e
+    --project,  -p
+    --no-magic
+    --version,  -v
+    --help,     -h
 
   Examples
     $ license
@@ -47,11 +48,14 @@ if (cli.input[0] === 'list') {
 
 updateNotifier({ pkg }).notify()
 
+console.log('flags', cli.flags)
+
 license(cli.input[0] || 'mit', {
   author: cli.flags.author,
   year: cli.flags.year,
   email: cli.flags.email,
-  project: cli.flags.project
+  project: cli.flags.project,
+  magic: !cli.flags['no-magic'] || true
 })
   .then(highlight)
   .then(text => console.log(text))
