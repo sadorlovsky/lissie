@@ -13,7 +13,7 @@ const normalize = text => text.trim().toLowerCase().replace(' ', '-')
 export const list = () => pify(readdir)('licenses')
 
 export default (license = 'mit', options = {}) => {
-  const magic = isNil(options.magic) ? 'true' : options.magic
+  const magic = isNil(options.magic) ? false : options.magic
   const props = magic ? {
     year: Promise.resolve(new Date().getFullYear()),
     author: fullname(),
