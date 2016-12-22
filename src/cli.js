@@ -4,6 +4,7 @@ import meow from 'meow'
 import chalk from 'chalk'
 import updateNotifier from 'update-notifier'
 import map from 'lodash/fp/map'
+import { isNil } from 'lodash'
 import pkg from '../package.json'
 import license, { list } from './lissie'
 
@@ -48,14 +49,12 @@ if (cli.input[0] === 'list') {
 
 updateNotifier({ pkg }).notify()
 
-console.log('flags', cli.flags)
-
 license(cli.input[0] || 'mit', {
   author: cli.flags.author,
   year: cli.flags.year,
   email: cli.flags.email,
   project: cli.flags.project,
-  magic: !cli.flags['no-magic'] || true
+  magic: isNil(cli.flags.magic) ? true : cli.flags.magic
 })
   .then(highlight)
   .then(text => console.log(text))
