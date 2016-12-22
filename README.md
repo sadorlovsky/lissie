@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/sadorlovsky/lissie.svg?branch=master)](https://travis-ci.org/sadorlovsky/lissie)
 [![Coverage Status](https://coveralls.io/repos/github/sadorlovsky/lissie/badge.svg?branch=master)](https://coveralls.io/github/sadorlovsky/lissie?branch=master)
 
+> Tool for generate LICENSE
+
 ## Usage
 ### CLI
 ```bash
