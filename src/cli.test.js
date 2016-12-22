@@ -19,6 +19,6 @@ test('list', async t => {
 })
 
 test('Error message if license not exists', async t => {
-  const { stdout } = await execa('src/cli.js', ['no-exist'])
+  const { stdout } = await execa('src/cli.js', ['no-exist', '--no-magic'])
   t.is(stdout, 'There is not that license')
 })
