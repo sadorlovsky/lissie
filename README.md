@@ -38,7 +38,7 @@ license('MIT', {
 ```
 $ license
 ```
-and `lissie` will generate MIT Licese text with your full name and current year. Also you can disable magic with `--no-magic option`. In this case you will have to change some info on your own.
+and `lissie` will generate MIT License text with your full name and current year. Also you can disable magic with `--no-magic` option. In this case you will have to change some info on your own.
 
 ## License
 
