@@ -8,13 +8,13 @@
 
 ```bash
 $ npx lissie # MIT by default
-$ npx lissie mit -a 'Zach Orlovsky' # author full name
+$ npx lissie apache -a 'Zach Orlovsky' # author full name
 ```
 
 Save to LICENSE file:
 
 ```bash
-$ npx lissie MIT > LICENSE.md
+$ npx lissie > LICENSE.md
 ```
 
 ### Node.js
