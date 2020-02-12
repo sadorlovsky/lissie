@@ -1,6 +1,6 @@
 # Lissie
 
-> cli tool that displays a LICENSE text
+> CLI tool that displays a LICENSE text
 
 ## Usage
 
