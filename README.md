@@ -1,8 +1,9 @@
 # Lissie
 
-> Tool for generate LICENSE
+> cli tool that displays a LICENSE text
 
 ## Usage
+
 ### CLI
 
 ```bash
@@ -17,11 +18,12 @@ $ npx lissie MIT > LICENSE.md
 ```
 
 ### Node.js
+
 ```bash
 $ yarn add lissie
 ```
 
-```javascript
+```ts
 import license from 'lissie'
 
 license('MIT', {
@@ -33,7 +35,7 @@ license('MIT', {
 
 `lissie` can guess your full name, email and the name of project you want license for. So run just
 
-```
+```bash
 $ npx lissie
 ```
 
