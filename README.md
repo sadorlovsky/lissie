@@ -4,23 +4,21 @@
 
 ## Usage
 ### CLI
-```bash
-$ npm install -g lissie
-```
 
 ```bash
-$ license # MIT by default
-$ license mit -a 'Zach Orlovsky' # author full name
+$ npx lissie # MIT by default
+$ npx lissie mit -a 'Zach Orlovsky' # author full name
 ```
+
 Save to LICENSE file:
 
 ```bash
-$ license MIT > LICENSE.md
+$ npx lissie MIT > LICENSE.md
 ```
 
 ### Node.js
 ```bash
-$ npm install lissie --save
+$ yarn add lissie
 ```
 
 ```javascript
@@ -34,11 +32,9 @@ license('MIT', {
 ### Magic :sparkles:
 
 `lissie` can guess your full name, email and the name of project you want license for. So run just
-```
-$ license
-```
-and `lissie` will generate MIT License text with your full name and current year. Also you can disable magic with `--no-magic` option. In this case you will have to change some info on your own.
 
-## License
+```
+$ npx lissie
+```
 
-MIT © [Zach Orlovsky](https://orlovsky.rocks)
+and `lissie` will display `MIT License` text with your full name and current year. Also you can disable magic with `--no-magic` option. In this case you have to change some info on your own.

@@ -26,7 +26,7 @@ export default async (license: string = 'mit', options: any = {}): Promise<strin
     const opts = await pProps(props).then(defaults => merge({}, defaults, options))
 
     const text = await promisify(readFile)(
-      path.join(__dirname, '..', 'licenses', normalize(license)),
+      path.join(__dirname, 'licenses', normalize(license)),
       { encoding: 'utf8' }
     )
 
