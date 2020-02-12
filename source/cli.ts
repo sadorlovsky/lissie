@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-
+import { readdir } from 'fs'
+import { promisify } from 'util'
 import meow from 'meow'
 import chalk from 'chalk'
 import updateNotifier from 'update-notifier'
-import map from 'lodash/fp/map'
+import { map } from 'lodash/fp'
 import { isNil } from 'lodash'
 import pkg from '../package.json'
-import license, { list } from './lissie'
+import license from './lissie'
 
 const cli = meow(`
   Usage
@@ -26,17 +27,37 @@ const cli = meow(`
     $ license mit
     $ license mit -a "Zach Orlovsky"
 `, {
-  alias: {
-    a: 'author',
-    y: 'year',
-    e: 'email',
-    p: 'project',
-    v: 'version',
-    h: 'help'
+  flags: {
+    author: {
+      type: 'string',
+      alias: 'a'
+    },
+    year: {
+      type: 'number',
+      alias: 'y'
+    },
+    email: {
+      type: 'string',
+      alias: 'e'
+    },
+    project: {
+      type: 'string',
+      alias: 'p'
+    },
+    version: {
+      type: 'boolean',
+      alias: 'v'
+    },
+    help: {
+      type: 'boolean',
+      alias: 'h'
+    }
   }
 })
 
-const highlight = text => text.replace(
+const list = () => promisify(readdir)('licenses')
+
+const highlight = (text: string): string => text.replace(
   /\{year\}|\{author\}|\{project\}|\{email\}/gi,
   matched => chalk.black.bgYellow(matched)
 )

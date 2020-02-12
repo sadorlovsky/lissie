@@ -1,15 +1,15 @@
 import test from 'ava'
 import { take } from 'lodash'
 import { stripIndent } from 'common-tags'
-import license from './lissie'
+import license from '../source/lissie'
 
-const head = x => take(x.split('\n'), 3).join('\n')
+const head = (str: string): string => take(str.split('\n'), 3).join('\n')
 
 test('returns license text', async t => {
   const expected = stripIndent`
   The MIT License (MIT)
 
-  Copyright (c) 2016 {author}
+  Copyright (c) ${(new Date()).getFullYear()} {author}
 `
   t.is(head(await license()), expected)
   t.is(head(await license('mit')), expected)
@@ -33,6 +33,7 @@ test('normalize input', async t => {
   t.is(await license('Apache 2.0'), await license('apache-2.0'))
 })
 
-test('throws if no license found', t => {
-  t.throws(license('no-exist'))
+test('throws if no license found', async t => {
+  const error = await t.throwsAsync(license('no-exist'));
+  t.is(error.message, 'There is no such a license');
 })
