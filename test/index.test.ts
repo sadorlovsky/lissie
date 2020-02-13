@@ -1,8 +1,8 @@
 import test from 'ava'
 import { stripIndent } from 'common-tags'
-import { take } from 'lodash'
 import lissie from '../source'
 
+const take = (array: any[], count: number): any[] => array.slice(0, count)
 const head = (str: string): string => take(str.split('\n'), 3).join('\n')
 
 test('returns license text', t => {
