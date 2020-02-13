@@ -1,12 +1,7 @@
 {
   "name": "lissie",
   "version": "0.9.0",
-  "description": "CLI tool for generate LICENSE",
-  "main": "dist/lissie.js",
-  "bin": {
-    "license": "dist/cli.js"
-  },
-  "preferGlobal": true,
+  "description": "CLI tool that displays a LICENSE text",
   "scripts": {
     "lint": "eslint source --ext .ts",
     "test": "nyc ava",
@@ -38,8 +33,7 @@
     "functions": 100
   },
   "files": [
-    "dist",
-    "licenses"
+    "dist"
   ],
   "engines": {
     "node": ">=10.0.0"
@@ -63,12 +57,12 @@
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@types/common-tags": "^1.8.0",
     "@types/lodash": "^4.14.149",
+    "@types/mustache": "^4.0.0",
     "@types/project-name": "^1.0.0",
     "@types/update-notifier": "^2.5.0",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
     "ava": "^3.3.0",
-    "common-tags": "^1.8.0",
     "del-cli": "^3.0.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
@@ -77,23 +71,14 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "execa": "^4.0.0",
+    "lodash": "^4.17.15",
     "nyc": "^15.0.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
   "dependencies": {
     "chalk": "^3.0.0",
-    "deep-assign": "^3.0.0",
-    "fullname": "^4.0.1",
-    "lodash": "^4.17.15",
-    "meow": "^6.0.0",
-    "p-props": "^3.1.0",
-    "pify": "^4.0.1",
-    "project-name": "^1.0.0",
-    "promise.any": "^0.1.0",
-    "read-pkg": "^2.0.0",
-    "read-pkg-up": "^2.0.0",
-    "update-notifier": "^4.0.0",
-    "user-email": "^1.0.4"
+    "common-tags": "^1.8.0",
+    "meow": "^6.0.0"
   }
 }

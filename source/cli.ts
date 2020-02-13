@@ -1,17 +1,13 @@
 #!/usr/bin/env node
-import { readdir } from 'fs'
-import { promisify } from 'util'
 import meow from 'meow'
 import chalk from 'chalk'
-import updateNotifier from 'update-notifier'
-import { map } from 'lodash/fp'
-import { isNil } from 'lodash'
-import pkg from '../package.json'
-import license from './lissie'
+import lissie from '.'
+
+type LicenseType = 'mit' | 'apache'
 
 const cli = meow(`
   Usage
-    $ license <license>
+    $ lissie <license>
 
   Options
     --author,   -a
@@ -23,9 +19,9 @@ const cli = meow(`
     --help,     -h
 
   Examples
-    $ license
-    $ license mit
-    $ license mit -a "Zach Orlovsky"
+    $ lissie
+    $ lissie mit
+    $ lissie mit -a "Zach Orlovsky"
 `, {
   flags: {
     author: {
@@ -55,28 +51,10 @@ const cli = meow(`
   }
 })
 
-const list = () => promisify(readdir)('licenses')
-
 const highlight = (text: string): string => text.replace(
-  /\{year\}|\{author\}|\{project\}|\{email\}/gi,
+  /\{\{.*?\}\}/gi,
   matched => chalk.black.bgYellow(matched)
 )
 
-if (cli.input[0] === 'list') {
-  list()
-    .then(map(l => console.log('⚫', l)))
-    .then(() => process.exit())
-}
-
-updateNotifier({ pkg }).notify()
-
-license(cli.input[0] || 'mit', {
-  author: cli.flags.author,
-  year: cli.flags.year,
-  email: cli.flags.email,
-  project: cli.flags.project,
-  magic: isNil(cli.flags.magic) ? true : cli.flags.magic
-})
-  .then(highlight)
-  .then(text => console.log(text))
-  .catch(({ message }) => console.log(message))
+const output = lissie(cli.input[0] as LicenseType, cli.flags)
+console.log(highlight(output))

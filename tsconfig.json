@@ -5,7 +5,7 @@
     "declaration": true, /* Generates corresponding '.d.ts' file. */
     "declarationMap": true, /* Generates a sourcemap for each corresponding '.d.ts' file. */
     "sourceMap": true, /* Generates corresponding '.map' file. */
-    "outDir": "./dist/cjs", /* Redirect output structure to the directory. */
+    "outDir": "./dist", /* Redirect output structure to the directory. */
     "strict": true, /* Enable all strict type-checking options. */
     "noImplicitAny": true, /* Raise error on expressions and declarations with an implied 'any' type. */
     "strictNullChecks": true, /* Enable strict null checks. */
