@@ -1,89 +1,81 @@
 {
   "name": "lissie",
-  "version": "0.8.4",
-  "description": "CLI tool for generate LICENSE",
-  "main": "dist/lissie.js",
-  "bin": {
-    "license": "dist/cli.js"
-  },
-  "preferGlobal": true,
-  "scripts": {
-    "lint": "eslint src",
-    "test": "NODE_ENV=test nyc ava",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "pretest": "del coverage",
-    "prebuild": "del dist",
-    "build": "babel src -d dist --ignore \"**/*.test.js\"",
-    "prepublishOnly": "npm run lint && npm run test && npm run build"
-  },
-  "ava": {
-    "require": [
-      "babel-register"
-    ]
-  },
-  "nyc": {
-    "include": [
-      "src/*.js"
-    ],
-    "require": [
-      "babel-register"
-    ],
-    "sourceMap": false,
-    "instrument": false
-  },
-  "files": [
-    "dist",
-    "licenses"
+  "version": "0.9.0",
+  "description": "CLI tool that displays a LICENSE text",
+  "keywords": [
+    "cli",
+    "license"
   ],
-  "engines": {
-    "node": ">=4.0.0"
+  "homepage": "https://github.com/sadorlovsky/lissie",
+  "bugs": {
+    "url": "https://github.com/sadorlovsky/lissie/issues"
   },
-  "author": "Zach Orlovsky <sadorlovsky@gmail.com>",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/sadorlovsky/lissie.git"
   },
-  "keywords": [
-    "license",
-    "generator",
-    "cli"
+  "license": "MIT",
+  "author": "Zach Orlovsky <sadorlovsky@gmail.com>",
+  "files": [
+    "dist"
   ],
-  "bugs": {
-    "url": "https://github.com/sadorlovsky/lissie/issues"
-  },
-  "homepage": "https://github.com/sadorlovsky/lissie",
-  "devDependencies": {
-    "@sadorlovsky/eslint-config": "^0.13.0",
-    "ava": "^0.17.0",
-    "babel-cli": "^6.11.4",
-    "babel-eslint": "^7.1.1",
-    "babel-plugin-istanbul": "^3.0.0",
-    "babel-preset-env": "^1.1.1",
-    "babel-register": "^6.11.6",
-    "common-tags": "^1.4.0",
-    "coveralls": "^2.11.15",
-    "del-cli": "^0.2.1",
-    "eslint": "^3.12.2",
-    "eslint-plugin-ava": "^4.0.0",
-    "eslint-plugin-fp": "^2.2.0",
-    "eslint-plugin-import": "^2.2.0",
-    "execa": "^0.5.0",
-    "nyc": "^10.0.0"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": "dist/cli.js",
+  "scripts": {
+    "prebuild": "del dist",
+    "build": "tsc",
+    "lint": "eslint source --ext .ts",
+    "prepublishOnly": "npm run lint && npm run test && npm run build",
+    "pretest": "del coverage",
+    "test": "nyc ava"
   },
   "dependencies": {
-    "chalk": "^1.1.3",
-    "deep-assign": "^2.0.0",
-    "fullname": "^3.2.0",
-    "lodash": "^4.17.2",
-    "meow": "^3.7.0",
-    "p-props": "^1.0.0",
-    "pify": "^2.3.0",
-    "project-name": "^0.2.6",
-    "promise.any": "^0.1.0",
-    "read-pkg": "^2.0.0",
-    "read-pkg-up": "^2.0.0",
-    "update-notifier": "^1.0.3",
-    "user-email": "^1.0.1"
+    "chalk": "^3.0.0",
+    "common-tags": "^1.8.0",
+    "meow": "^6.0.0"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/common-tags": "^1.8.0",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "ava": "^3.3.0",
+    "del-cli": "^3.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "execa": "^4.0.0",
+    "nyc": "^15.0.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
+    "check-coverage": true,
+    "reporter": [
+      "lcovonly",
+      "text"
+    ],
+    "include": [
+      "source"
+    ],
+    "branches": 100,
+    "functions": 100
   }
 }
