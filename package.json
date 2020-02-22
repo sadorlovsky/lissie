@@ -3,8 +3,8 @@
   "version": "0.9.0",
   "description": "CLI tool that displays a LICENSE text",
   "keywords": [
-    "license",
-    "cli"
+    "cli",
+    "license"
   ],
   "homepage": "https://github.com/sadorlovsky/lissie",
   "bugs": {
@@ -19,6 +19,9 @@
   "files": [
     "dist"
   ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": "dist/cli.js",
   "scripts": {
     "prebuild": "del dist",
     "build": "tsc",
