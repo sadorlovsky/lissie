@@ -30,13 +30,3 @@ license('MIT', {
   author: 'Zach Orlovsky'
 })
 ```
-
-### Magic :sparkles:
-
-`lissie` can guess your full name, email and the name of project you want license for. So run just
-
-```bash
-$ npx lissie
-```
-
-and `lissie` will display `MIT License` text with your full name and current year. Also you can disable magic with `--no-magic` option. In this case you have to change some info on your own.

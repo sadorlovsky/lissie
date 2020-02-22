@@ -2,13 +2,56 @@
   "name": "lissie",
   "version": "0.9.0",
   "description": "CLI tool that displays a LICENSE text",
+  "keywords": [
+    "license",
+    "cli"
+  ],
+  "homepage": "https://github.com/sadorlovsky/lissie",
+  "bugs": {
+    "url": "https://github.com/sadorlovsky/lissie/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sadorlovsky/lissie.git"
+  },
+  "license": "MIT",
+  "author": "Zach Orlovsky <sadorlovsky@gmail.com>",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "lint": "eslint source --ext .ts",
-    "test": "nyc ava",
-    "pretest": "del coverage",
     "prebuild": "del dist",
     "build": "tsc",
-    "prepublishOnly": "npm run lint && npm run test && npm run build"
+    "lint": "eslint source --ext .ts",
+    "prepublishOnly": "npm run lint && npm run test && npm run build",
+    "pretest": "del coverage",
+    "test": "nyc ava"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "common-tags": "^1.8.0",
+    "meow": "^6.0.0"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/common-tags": "^1.8.0",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "ava": "^3.3.0",
+    "del-cli": "^3.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "execa": "^4.0.0",
+    "nyc": "^15.0.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   },
   "ava": {
     "extensions": [
@@ -31,49 +74,5 @@
     ],
     "branches": 100,
     "functions": 100
-  },
-  "files": [
-    "dist"
-  ],
-  "engines": {
-    "node": ">=10.0.0"
-  },
-  "author": "Zach Orlovsky <sadorlovsky@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sadorlovsky/lissie.git"
-  },
-  "keywords": [
-    "license",
-    "generator",
-    "cli"
-  ],
-  "bugs": {
-    "url": "https://github.com/sadorlovsky/lissie/issues"
-  },
-  "homepage": "https://github.com/sadorlovsky/lissie",
-  "devDependencies": {
-    "@istanbuljs/nyc-config-typescript": "^1.0.1",
-    "@types/common-tags": "^1.8.0",
-    "@typescript-eslint/eslint-plugin": "^2.19.2",
-    "@typescript-eslint/parser": "^2.19.2",
-    "ava": "^3.3.0",
-    "del-cli": "^3.0.0",
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "execa": "^4.0.0",
-    "nyc": "^15.0.0",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
-  },
-  "dependencies": {
-    "chalk": "^3.0.0",
-    "common-tags": "^1.8.0",
-    "meow": "^6.0.0"
   }
 }
